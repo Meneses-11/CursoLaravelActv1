@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\SistemaController;
+
 
 
 /*
@@ -15,9 +17,21 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
+    return view('sistema.entrada');
     return view('principal');
 });
+*/
+
+/*
+Route::get('/',[SistemaController::class,'entrada']);
+
+Route::post('/validar',[SistemaController::class,'validar']);
+*/
+
+Route::get('/',[SistemaController::class, 'entrada']);
+
+Route::post('/validar',[SistemaController::class,'validar'])->name('validar');
 
 Route::post('procesar', function(Request $r){
     $idioma = $r -> input('idioma');
