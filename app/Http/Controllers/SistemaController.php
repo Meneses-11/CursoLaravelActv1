@@ -14,9 +14,21 @@ class SistemaController extends Controller
         dump($solicitud->all());
         $usuario = $solicitud->input('usuario');
         $password = $solicitud->input('password');
-        if($usuario == $password) echo "Si se puede entrar";
-        else echo "No puede entrar";
+        if($usuario == $password) {
+            //return redirect("http://127.0.0.1:8000/ropciones");
+            return redirect(route('nopciones'));
+            echo "Si se puede entrar";
+        } else {
+            return view('sistema.error');
+            echo "No puede entrar";
+        }
         
+    }
+
+
+
+    public function mopciones(){
+        return view('sistema.opciones');
     }
 
     public function saludar(){

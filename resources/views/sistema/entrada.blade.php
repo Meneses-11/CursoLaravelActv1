@@ -10,9 +10,9 @@
     
     <form action="{{route('validar')}}" method="POST">
         @csrf
-        <label for="elemento">Usuario</label>
+        <label for="elemento">Usuario</label><br>
         <input type="text" name="usuario" id='elemento'><br>
-        <label for="elemento">Password</label>
+        <label for="elemento">Password</label><br>
         <input type="text" name="password" id='elemento'><br>
         <input type="submit" value="Send">
     </form>

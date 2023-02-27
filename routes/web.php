@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\SistemaController;
+use App\Http\Controllers\idiomaController;
 
 
 
@@ -17,11 +18,10 @@ use App\Http\Controllers\SistemaController;
 |
 */
 
-/*Route::get('/', function () {
-    return view('sistema.entrada');
-    return view('principal');
+Route::get('/', function () {
+    return view('welcome');
 });
-*/
+
 
 /*
 Route::get('/',[SistemaController::class,'entrada']);
@@ -29,10 +29,18 @@ Route::get('/',[SistemaController::class,'entrada']);
 Route::post('/validar',[SistemaController::class,'validar']);
 */
 
-Route::get('/',[SistemaController::class, 'entrada']);
-
+//Route::get('/',[SistemaController::class, 'entrada']);
 Route::post('/validar',[SistemaController::class,'validar'])->name('validar');
+Route::get('ropciones',[SistemaController::class, 'mopciones'])->name('nopciones');
+Route::get('login',[SistemaController::class,'entrada']);
+Route::get('seleccionar',[idiomaController::class, 'seleccionar'])->name('seleccionar');
+Route::post('procesar',[idiomaController::class, 'procesar'])->name('procesar');
+Route::get('saludar',[idiomaController::class, 'saludar'])->name('saludar');
+Route::get('despedir',[idiomaController::class, 'despedir'])->name('despedir');
 
+
+
+/*
 Route::post('procesar', function(Request $r){
     $idioma = $r -> input('idioma');
     switch($idioma){
@@ -50,17 +58,13 @@ Route::post('procesar', function(Request $r){
             break;
     }
 })->name('otro');
-
-
-
 Route::get('saludo/{nombre?}', function($nombre=null){
     return view('saludos.español',compact('nombre'));
 })->name('r1');
-
 Route::get('salutare/{nombre?}', function($nombre=null){
     return view('saludos.italiano')->with('nombre',$nombre);
 })->name('r2');
-
 Route::get('saluer/{nombre?}', function($nombre=null){
     return view('saludos.frances',compact('nombre'));
 })->name('r3');
+*/
