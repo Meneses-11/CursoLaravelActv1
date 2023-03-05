@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class SistemaController extends Controller
 {
@@ -11,16 +12,14 @@ class SistemaController extends Controller
     }
 
     public function validar(Request $solicitud){
-        dump($solicitud->all());
+
         $usuario = $solicitud->input('usuario');
         $password = $solicitud->input('password');
+        
         if($usuario == $password) {
-            //return redirect("http://127.0.0.1:8000/ropciones");
             return redirect(route('nopciones'));
-            echo "Si se puede entrar";
         } else {
             return view('sistema.error');
-            echo "No puede entrar";
         }
         
     }
@@ -36,11 +35,9 @@ class SistemaController extends Controller
     }
 
     public function salir(Request $solicitud){
-        session::forget('idioma');
-        $solicitud -> session() -> forget('name');
-        $solicitud -> session() -> flush();
-        return redirect(route('login'));
-
+        Session::forget('idioma');
+        Session::flush();
+        return view("welcome");
     }
     
 }

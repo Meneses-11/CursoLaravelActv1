@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class idiomaController extends Controller
 {
@@ -11,13 +12,13 @@ class idiomaController extends Controller
     }
     public function procesar(Request $solicitud){
         $idioma = $solicitud -> input("idioma");
-
-        session(['idioma' => $idioma]);
+        Session::put('idioma',$idioma);
+        //session(['idioma' => $idioma]);
         return redirect("ropciones");
     }
 
     public function saludar(){
-        $idioma = session('idioma','español');
+        $idioma = Session::get('idioma','español');
 
         switch ($idioma){
             case 'frances':
@@ -32,11 +33,12 @@ class idiomaController extends Controller
             default: $mensaje = "Hola";
 
         }
+        $mensaje = $idioma . ":" . $mensaje;
         return view('saludar', compact('mensaje'));
     }
 
     public function despedir(){
-        $idioma = session('idioma','español');
+        $idioma = Session::get('idioma','español');
 
         switch ($idioma){
             case 'frances':
@@ -51,7 +53,7 @@ class idiomaController extends Controller
             default: $mensaje = "Adios";
 
         }
-        return view('saludar', compact('mensaje'));
+        return view('despedir', compact('mensaje'));
     }
 
 }

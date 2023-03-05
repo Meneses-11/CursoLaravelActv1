@@ -6,16 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style type="text/css">
-        head{
+        .encabezado {
             background-color: red;
-            width: 100%;
+            display: inline-block;
+            width: 90%;
             height: 10%;
-            
+            border: 15px solid green;
+            padding: 50px;
+            margin: 20px;
         }
     </style>
 </head>
 <body>
-    <header>
+    <header class="encabezado">
         ENCABEZADO DE LA EMPRESA
     </header>
     @yield('contenido')

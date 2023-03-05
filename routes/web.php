@@ -30,7 +30,7 @@ Route::post('/validar',[SistemaController::class,'validar']);
 */
 
 //Route::get('/',[SistemaController::class, 'entrada']);
-Route::post('/validar',[SistemaController::class,'validar'])->name('validar');
+Route::post('validar',[SistemaController::class,'validar'])->name('validar');
 Route::get('ropciones',[SistemaController::class, 'mopciones'])->name('nopciones');
 Route::get('login',[SistemaController::class,'entrada'])->name('login');
 Route::get('seleccionar',[idiomaController::class, 'seleccionar'])->name('seleccionar');
